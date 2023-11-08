@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { CartProvider } from '@/context/CartContext'
+import { ReturnHome } from '@/components/ReturnHome'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-col min-h-screen justify-center items-center`}>{children}</body>
+      <CartProvider>
+        <body className={`${inter.className} text-white bg-black flex flex-col min-h-screen justify-center items-center`}>{children}</body>
+        {/* <ReturnHome /> */}
+      </CartProvider>
     </html>
   )
 }
